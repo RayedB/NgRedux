@@ -1,4 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
+import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
+import { IAppState } from '../store';
+import { CounterActions } from './app.actions';
 import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -6,7 +9,11 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [NgReduxTestingModule],
+      providers: [CounterActions]
     }).compileComponents();
+    // Reset the mock to start from a clean slate in each unit test.
+    MockNgRedux.reset();
   }));
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);

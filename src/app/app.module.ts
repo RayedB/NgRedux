@@ -14,7 +14,9 @@ import { CounterActions } from './app.actions';
     BrowserModule,
     NgReduxModule,
   ],
-  providers: [CounterActions],
+  providers: [
+    CounterActions,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
