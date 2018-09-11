@@ -5,6 +5,7 @@ import { Action } from 'redux';
 export class CounterActions {
   static INCREMENT = 'INCREMENT';
   static DECREMENT = 'DECREMENT';
+  static ADD_COUNTER = 'ADD_COUNTER';
 
   increment(): Action {
     return { type: CounterActions.INCREMENT };

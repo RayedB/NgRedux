@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 import { AppComponent } from './app.component';
 
 import { rootReducer, IAppState, INITIAL_STATE } from '../store';
@@ -18,10 +18,17 @@ import { CounterActions } from './app.actions';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngRedux: NgRedux<IAppState>) {
+  constructor(ngRedux: NgRedux<IAppState>, devTools: DevToolsExtension) {
+
+    const storeEnhancers = devTools.isEnabled() ? // <- New
+      [ devTools.enhancer() ] : // <- New
+      [];
+
     ngRedux.configureStore(
       rootReducer,
-      INITIAL_STATE
+      INITIAL_STATE,
+      [],
+      storeEnhancers
     );
   }
  }
