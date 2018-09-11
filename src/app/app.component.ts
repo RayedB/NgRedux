@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'app';
-  @select() count$: Observable<number>;
+  readonly count$: Observable<number>;
   subscription;
 
   constructor(private ngRedux: NgRedux<IAppState>, private actions: CounterActions) {

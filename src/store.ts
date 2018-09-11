@@ -6,7 +6,7 @@ export interface IAppState {
 }
 
 export const INITIAL_STATE: IAppState = {
-  count: 0,
+  count: 0
 };
 
 export function rootReducer(lastState: IAppState, action: Action): IAppState {
